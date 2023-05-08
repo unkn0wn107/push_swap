@@ -6,7 +6,7 @@
 #    By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/07 00:01:07 by agaley            #+#    #+#              #
-#    Updated: 2023/05/08 15:46:11 by agaley           ###   ########lyon.fr    #
+#    Updated: 2023/05/08 23:37:56 by agaley           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SRC_DIR = src
 OBJ_DIR = obj
 
 SRC = ${SRC_DIR}/push_swap.c
+H = ${SRC_DIR}/push_swap.h
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 LIBFT = libft
@@ -30,7 +31,7 @@ CC = gcc
 
 all:			${NAME}
 
-${NAME}:		${LIBFT} mkdir ${OBJ}
+${NAME}:		${LIBFT} mkdir ${OBJ} $(LIBFT_HEADER) $(H)
 			${CC} ${CFLAGS} ${OBJ} -o $@ ${LIBFT_FLAGS}
 
 ${LIBFT}:		FORCE;
@@ -38,7 +39,7 @@ ${LIBFT}:		FORCE;
 
 FORCE: ;
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(LIBFT_HEADER)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(LIBFT_HEADER) $(H)
 			$(CC) $(OBJ_FLAGS) -o $@ -c $<
 
 mkdir:
