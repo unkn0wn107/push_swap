@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/03/11 00:01:07 by agaley            #+#    #+#              #
-#    Updated: 2023/05/08 01:07:06 by agaley           ###   ########lyon.fr    #
+#    Created: 2023/05/07 00:01:07 by agaley            #+#    #+#              #
+#    Updated: 2023/05/08 15:46:11 by agaley           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,27 +15,34 @@ NAME = push_swap
 SRC_DIR = src
 OBJ_DIR = obj
 
+SRC = ${SRC_DIR}/push_swap.c
+OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+
 LIBFT = libft
-LIBFT_HEADERS = libft/libft.h
+LIBFT_HEADER = libft/libft.h
 LIBFT_FLAGS = -Llibft -lft
 MAKE_LIBFT = make -C libft
 
 MAKEFLAGS += --no-print-directory
-CFLAGS = -Wall -Wextra -Werror -pipe
+CFLAGS = -Wall -Wextra -Werror -g3
 OBJ_FLAGS = ${CFLAGS} -I$(LIBFT) -I$(SRC_DIR)
 CC = gcc
 
-all:			${LIBFT} ${NAME}
+all:			${NAME}
 
-${NAME}:		${LIBFT} ${OBJ_SRV}
-			${CC} ${CFLAGS} ${OBJ_SRV} -o $@ ${LIBFT_FLAGS}
+${NAME}:		${LIBFT} mkdir ${OBJ}
+			${CC} ${CFLAGS} ${OBJ} -o $@ ${LIBFT_FLAGS}
 
-${LIBFT}:
+${LIBFT}:		FORCE;
 			$(MAKE_LIBFT)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(LIBFT_HEADERS)
-			mkdir $(OBJ_DIR)
+FORCE: ;
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(LIBFT_HEADER)
 			$(CC) $(OBJ_FLAGS) -o $@ -c $<
+
+mkdir:
+			mkdir -p $(OBJ_DIR)
 
 clean:
 		$(MAKE_LIBFT) $@
