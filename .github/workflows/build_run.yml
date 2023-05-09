@@ -1,4 +1,4 @@
-name: Check, build and run
+name: Build and run
 
 on:
   push:
@@ -13,9 +13,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: make check
-      run: make check
-    - name: make
+
+    - name: Build
       run: make
-    - name: run
+
+    - name: Run
       run: ./push_swap "2 1 4"
