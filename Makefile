@@ -16,7 +16,7 @@ SRC_DIR = src
 OBJ_DIR = obj
 TEST_DIR = test
 
-SRC = push_swap.c
+SRC = ${SRC_DIR}/push_swap.c
 SRCS = ${SRC_DIR}/stack_adapter.c \
 	${SRC_DIR}/stack_utils.c ${SRC_DIR}/stack_swap_push.c \
 	${SRC_DIR}/parser.c ${SRC_DIR}/error.c
@@ -39,33 +39,27 @@ CFLAGS = -Wall -Wextra -Werror -g3
 OBJ_FLAGS = ${CFLAGS} -I$(LIBFT) -I$(SRC_DIR)
 CC = gcc
 
-all:	${NAME}
+all:			${NAME}
 
 ${NAME}:		${LIBFT} mkdir ${OBJ} ${OBJS} $(LIBFT_HEADER) $(H)
 			${CC} ${CFLAGS} ${OBJ} ${OBJS} -o $@ ${LIBFT_FLAGS}
 
-${LIBFT}:		FORCE;
+lib:
 			$(MAKE_LIBFT)
 
-FORCE: ;
+${LIBFT}:		lib
 
-$(OBJ_DIR)/%.test.o:	$(TEST_DIR)/%.c $(LIBFT_HEADER) $(H) $(H_TEST)
+$(OBJ_DIR)/%.test.o:	$(TEST_DIR)/%.test.c $(LIBFT_HEADER) $(H) $(H_TEST)
 			$(CC) $(OBJ_FLAGS) -o $@ -c $<
 
-$(OBJ_DIR)/%.o:			$(SRC_DIR)/%.c $(LIBFT_HEADER) $(H)
+$(OBJ_DIR)/%.o:		$(SRC_DIR)/%.c $(LIBFT_HEADER) $(H)
 			$(CC) $(OBJ_FLAGS) -o $@ -c $<
-
-# ${OBJ}: 		$@/%.c $(LIBFT_HEADER) $(H)
-# 			$(CC) $(OBJ_FLAGS) -o $@ -c $<
-
-# ${OBJS}: 		$@/%.c $(LIBFT_HEADER) $(H)
-# 			$(CC) $(OBJ_FLAGS) -o $@ -c $<
 
 unit-test:		${LIBFT} mkdir ${OBJ_TEST} ${OBJS} $(LIBFT_HEADER) $(H) $(H_TEST)
 			${CC} ${CFLAGS} ${OBJ_TEST} ${OBJS} -o $@ ${LIBFT_FLAGS}
 
-# ${OBJ_TEST}: 	$(LIBFT_HEADER) $(H) $(H_TEST)
-# 			$(CC) $(OBJ_FLAGS) -o $@ -c $<
+test:		unit-test
+		./unit-test
 
 mkdir:
 			mkdir -p $(OBJ_DIR)
