@@ -39,30 +39,29 @@ CFLAGS = -Wall -Wextra -Werror -g3
 OBJ_FLAGS = ${CFLAGS} -I$(LIBFT) -I$(SRC_DIR)
 CC = gcc
 
-all:			${NAME}
+all:					${NAME}
 
-${NAME}:		${LIBFT} mkdir ${OBJ} ${OBJS} $(LIBFT_HEADER) $(H)
+${NAME}:				${LIBFT} ${OBJ} ${OBJS} $(LIBFT_HEADER) $(H)
 			${CC} ${CFLAGS} ${OBJ} ${OBJS} -o $@ ${LIBFT_FLAGS}
 
 lib:
 			$(MAKE_LIBFT)
 
-${LIBFT}:		lib
+${LIBFT}:				lib
 
 $(OBJ_DIR)/%.test.o:	$(TEST_DIR)/%.test.c $(LIBFT_HEADER) $(H) $(H_TEST)
+		@mkdir -p $(OBJ_DIR)
 			$(CC) $(OBJ_FLAGS) -o $@ -c $<
 
-$(OBJ_DIR)/%.o:		$(SRC_DIR)/%.c $(LIBFT_HEADER) $(H)
+$(OBJ_DIR)/%.o:			$(SRC_DIR)/%.c $(LIBFT_HEADER) $(H)
+		@mkdir -p $(OBJ_DIR)
 			$(CC) $(OBJ_FLAGS) -o $@ -c $<
 
-unit-test:		${LIBFT} mkdir ${OBJ_TEST} ${OBJS} $(LIBFT_HEADER) $(H) $(H_TEST)
+unit-test:				${LIBFT} ${OBJ_TEST} ${OBJS} $(LIBFT_HEADER) $(H) $(H_TEST)
 			${CC} ${CFLAGS} ${OBJ_TEST} ${OBJS} -o $@ ${LIBFT_FLAGS}
 
-test:		unit-test
+test:					unit-test
 		./unit-test
-
-mkdir:
-			mkdir -p $(OBJ_DIR)
 
 check:
 		norminette
@@ -72,10 +71,11 @@ clean:
 		rm -r ${OBJ_DIR}
 		find . -name "*.gch" -delete
 
-fclean:	clean
+fclean:					clean
 		$(MAKE_LIBFT) $@
 		find . -name "${NAME}" -delete
+		find . -name "unit-test" -delete
 
-re:		fclean all
+re:						fclean all
 
 .PHONY:	all clean fclean re
