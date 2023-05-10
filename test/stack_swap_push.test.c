@@ -6,7 +6,7 @@
 /*   By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 22:56:32 by agaley            #+#    #+#             */
-/*   Updated: 2023/05/10 02:10:37 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2023/05/10 14:17:41 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,19 +54,37 @@ int	test_stack_swap(void)
  * @param stack2 pointer towards stack2 anchor
  * @return -1 if a stack is NULL, 1 if stack1 is empty, 0 otherwise
  */
-// int	stack_push(t_stack *stack1, t_stack *stack2)
-// {
-// 	t_node	*node1;
-// 	t_node	*node2;
+int	test_stack_push(void)
+{
+	int		response;
+	t_stack	*stack1;
+	t_stack	*stack2;
+	t_node	node;
 
-// 	if (!stack1 || !stack2)
-// 		return (-1);
-// 	node1 = stack1->head;
-// 	if (!node1)
-// 		return (1);
-// 	node2 = stack2->head;
-// 	stack2->head = node1;
-// 	stack1->head = node1->next;
-// 	node1->next = node2;
-// 	return (0);
-// }
+	node.value = 1;
+	response = stack_push(NULL, NULL);
+	if (response != -1) // -1 if stack is NULL
+		return (ft_printf("stack_push : doesn't return -1 on NULL, NULL\n"), -1);
+	stack1 = stack_init();
+	response = stack_push(stack1, NULL);
+	if (response != -1) // -1 if stack is NULL
+		return (ft_printf("stack_push : doesn't return -1 on NULL stack 1\n"), -1);
+	response = stack_push(NULL, stack1);
+	if (response != -1) // -1 if stack is NULL
+		return (ft_printf("stack_push : doesn't return -1 on NULL stack 2\n"), -1);
+	stack2 = stack_init();
+	response = stack_push(stack1, stack2);
+	if (response != 1) // 1 if stack 1 is empty
+		return (ft_printf("stack_push : doesn't return 1 for empty stack 1\n"), -1);
+	stack_add(stack1, node);
+	response = stack_push(stack1, stack2);
+	if (stack2->head->value != 1 || stack1->head != NULL)
+		return (ft_printf("stack_push : doesn't push nodes\n"), -1);
+	if (response != 0) // 0 if success
+		return (ft_printf("stack_push : doesn't return 0 for success\n"), -1);
+	stack_pop(stack2);
+	if (stack2->head != NULL)
+		return (ft_printf("stack_push : nodes not popped properly\n"), -1);
+	printf("stack_push: OK\n");
+	return (0);
+}

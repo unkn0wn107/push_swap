@@ -6,7 +6,7 @@
 /*   By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 22:56:32 by agaley            #+#    #+#             */
-/*   Updated: 2023/05/10 02:11:55 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2023/05/10 14:22:33 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int	stack_swap2(t_stack *stack1, t_stack *stack2)
 
 /**
  * Push first node of stack1 to stack2
+ * unit tested
  *
  * @param stack1 pointer towards stack1 anchor
  * @param stack2 pointer towards stack2 anchor
