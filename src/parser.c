@@ -6,13 +6,13 @@
 /*   By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 00:51:30 by agaley            #+#    #+#             */
-/*   Updated: 2023/05/10 01:55:10 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2023/05/10 15:42:17 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static char	*parse_args(char *str, char **argv)
+char	*parse_args(char *str, char **argv)
 {
 	int		i;
 
