@@ -12,6 +12,14 @@
 			"args": ["arg1", "arg2 arg2bis"],
 			"cwd": "${workspaceFolder}",
 			"preLaunchTask": "make"
+		},
+		{
+			"type": "lldb",
+			"request": "launch",
+			"name": "Debug test",
+			"program": "${workspaceFolder}/unit-test",
+			"cwd": "${workspaceFolder}",
+			"preLaunchTask": "tmake"
 		}
 	]
 }
