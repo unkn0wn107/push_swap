@@ -24,8 +24,8 @@ H = ${SRC_DIR}/push_swap.h
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
-SRC_TEST = ${TEST_DIR}/test.c \
-	${TEST_DIR}/stack_swap_push.test.c
+SRC_TEST = ${TEST_DIR}/main.test.c \
+	${TEST_DIR}/stack_ops.test.c
 H_TEST = ${TEST_DIR}/test.h
 OBJ_TEST = $(SRC_TEST:$(TEST_DIR)/%.c=$(OBJ_DIR)/%.o)
 
