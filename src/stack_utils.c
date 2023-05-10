@@ -6,7 +6,7 @@
 /*   By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 22:56:32 by agaley            #+#    #+#             */
-/*   Updated: 2023/05/10 01:04:29 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2023/05/10 22:14:07 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,19 +62,6 @@ void	stack_pop(t_stack *stack)
 		stack->head = popped->next;
 		free(popped);
 	}
-}
-
-/**
- * Return first node in a stack
- *
- * @param stack pointer towards stack anchor
- * @return first node in stack
- */
-t_node    *stack_head(t_stack *stack)
-{
-	if (!stack)
-        return (NULL);
-    return (stack->head);
 }
 
 /**

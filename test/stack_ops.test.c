@@ -6,7 +6,7 @@
 /*   By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 22:56:32 by agaley            #+#    #+#             */
-/*   Updated: 2023/05/10 14:59:41 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2023/05/10 22:11:17 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,81 @@ int	test_stack_push(void)
 	if (stack2->head != NULL)
 		return (ft_printf("stack_push : nodes not popped properly\n"), -1);
 	printf("stack_push: OK\n");
+	return (0);
+}
+
+int	test_stack_rotate(void)
+{
+	int		response;
+	t_stack	*stack;
+	t_node	node1;
+	t_node	node2;
+	t_node	node3;
+
+	node1.value = 1;
+	node2.value = 2;
+	node3.value = 3;
+	response = stack_rotate(NULL);
+	if (response != -1) // -1 if stack is NULL
+		return (ft_printf("stack_rotate : doesn't return -1 on NULL\n"), -1);
+	stack = stack_init();
+	response = stack_rotate(stack);
+	if (response != 1) // 1 if stack doesn't have 2 nodes or more
+		return (ft_printf("stack_rotate : doesn't return 1 if stack < 2 nodes\n"), -1);
+	stack_add(stack, node1);
+	response = stack_rotate(stack);
+	if (response != 1) // 1 if stack doesn't have 2 nodes or more
+		return (ft_printf("stack_rotate : doesn't return 1 if stack < 2 nodes\n"), -1);
+	stack_add(stack, node2);
+	stack_add(stack, node3);
+	response = stack_rotate(stack);
+	if (stack->head->value != 2 || stack->head->next->value != 1 || stack->head->next->next->value != 3)
+		return (ft_printf("stack_rotate : doesn't rotate nodes\n"), -1);
+	if (response != 0) // 0 if success
+		return (ft_printf("stack_rotate : doesn't return 0 for success\n"), -1);
+	stack_pop(stack);
+	stack_pop(stack);
+	stack_pop(stack);
+	if (stack->head != NULL)
+		return (ft_printf("stack_rotate : nodes not popped properly\n"), -1);
+	printf("stack_rotate: OK\n");
+	return (0);
+}
+
+int	test_stack_rrotate(void)
+{
+	int		response;
+	t_stack	*stack;
+	t_node	node1;
+	t_node	node2;
+	t_node	node3;
+
+	node1.value = 1;
+	node2.value = 2;
+	node3.value = 3;
+	response = stack_rrotate(NULL);
+	if (response != -1) // -1 if stack is NULL
+		return (ft_printf("stack_rrotate : doesn't return -1 on NULL\n"), -1);
+	stack = stack_init();
+	response = stack_rrotate(stack);
+	if (response != 1) // 1 if stack doesn't have 2 nodes or more
+		return (ft_printf("stack_rrotate : doesn't return 1 if stack < 2 nodes\n"), -1);
+	stack_add(stack, node1);
+	response = stack_rrotate(stack);
+	if (response != 1) // 1 if stack doesn't have 2 nodes or more
+		return (ft_printf("stack_rrotate : doesn't return 1 if stack < 2 nodes\n"), -1);
+	stack_add(stack, node2);
+	stack_add(stack, node3);
+	response = stack_rrotate(stack);
+	if (stack->head->value != 1 || stack->head->next->value != 3 || stack->head->next->next->value != 2)
+		return (ft_printf("stack_rrotate : doesn't rotate nodes\n"), -1);
+	if (response != 0) // 0 if success
+		return (ft_printf("stack_rrotate : doesn't return 0 for success\n"), -1);
+	stack_pop(stack);
+	stack_pop(stack);
+	stack_pop(stack);
+	if (stack->head != NULL)
+		return (ft_printf("stack_rrotate : nodes not popped properly\n"), -1);
+	printf("stack_rrotate: OK\n");
 	return (0);
 }

@@ -6,11 +6,11 @@
 /*   By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 00:53:05 by agaley            #+#    #+#             */
-/*   Updated: 2023/05/10 01:54:59 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2023/05/10 21:35:38 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "push_swap.h"
+#include "push_swap.h"
 
 // void	fill_stack(char *str, t_stack *stack_a)
 // {
@@ -30,7 +30,7 @@
 
 void	fill_stack(char *str, t_stack *stack_a)
 {
- 	int		i;
+	int		i;
 	int		num;
 	char	**arr;
 

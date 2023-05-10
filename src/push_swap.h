@@ -6,7 +6,7 @@
 /*   By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 22:51:50 by agaley            #+#    #+#             */
-/*   Updated: 2023/05/10 01:03:02 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2023/05/10 22:21:19 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ typedef struct s_stack
 t_stack	*stack_init(void);
 void	stack_add(t_stack *stack, t_node node);
 void	stack_pop(t_stack *stack);
-t_node	*stack_head(t_stack *stack);
+t_node	*stack_last(t_stack *stack);
+t_node	*stack_last_n(t_stack *stack, size_t N);
 void	stack_free(t_stack *stack);
 
 // Stack adapter
@@ -42,6 +43,10 @@ void	fill_stack(char *str, t_stack *stack_a);
 int		stack_swap(t_stack	*stack);
 int		stack_swap2(t_stack *stack1, t_stack *stack2);
 int		stack_push(t_stack *stack1, t_stack *stack2);
+int		stack_rotate(t_stack *stack);
+int		stack_rotate2(t_stack *stack1, t_stack *stack2);
+int		stack_rrotate(t_stack *stack);
+int		stack_rrotate2(t_stack *stack1, t_stack *stack2);
 
 // Parser
 char	*parse_args(char *str, char **argv);

@@ -6,7 +6,7 @@
 /*   By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 00:27:51 by agaley            #+#    #+#             */
-/*   Updated: 2023/05/10 14:16:58 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2023/05/10 14:53:39 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,7 @@
 
 int	test_stack_swap(void);
 int	test_stack_push(void);
+int	test_stack_rotate(void);
+int	test_stack_rrotate(void);
 
 #endif

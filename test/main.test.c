@@ -16,5 +16,7 @@ int	main(void)
 {
 	test_stack_swap();
 	test_stack_push();
+	test_stack_rotate();
+	test_stack_rrotate();
 	return (0);
 }
