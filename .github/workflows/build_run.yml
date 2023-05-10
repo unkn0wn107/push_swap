@@ -13,8 +13,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-      with:
-        submodules: recursive
+
+    - name: Clone libf
+      run: git submodule add https://github.com/unkn0wn107/libft
 
     - name: Build
       run: make
