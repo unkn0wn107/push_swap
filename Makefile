@@ -6,7 +6,7 @@
 #    By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/07 00:01:07 by agaley            #+#    #+#              #
-#    Updated: 2023/05/11 19:06:06 by agaley           ###   ########lyon.fr    #
+#    Updated: 2023/05/11 22:02:50 by agaley           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,8 +31,7 @@ H_TEST = ${TEST_DIR}/test.h
 OBJ_TEST = $(SRC_TEST:$(TEST_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 LIBFT = libft
-LIBFT_HEADER = libft/libft.h
-LIBFT_FLAGS = -Llibft -lft
+LIBFT_A = libft/libft.a
 MAKE_LIBFT = make -C libft
 
 MAKEFLAGS += --no-print-directory
@@ -42,24 +41,24 @@ CC = gcc
 
 all:					${NAME}
 
-${NAME}:				${LIBFT} ${OBJ} ${OBJS} $(LIBFT_HEADER) $(H)
-		${CC} ${CFLAGS} ${OBJ} ${OBJS} -o $@ ${LIBFT_FLAGS}
+${NAME}:				${LIBFT} ${OBJ} ${OBJS} $(H)
+		${CC} ${CFLAGS} ${OBJ} ${OBJS} -o $@ $(LIBFT_A)
 
 lib:
 		$(MAKE_LIBFT)
 
 ${LIBFT}:				lib
 
-$(OBJ_DIR)/%.test.o:	$(TEST_DIR)/%.test.c $(LIBFT_HEADER) $(H) $(H_TEST) Makefile
+$(OBJ_DIR)/%.test.o:	$(TEST_DIR)/%.test.c $(LIBFT_A) $(H) $(H_TEST)
 		@mkdir -p $(OBJ_DIR)
 		$(CC) $(OBJ_FLAGS) -o $@ -c $<
 
-$(OBJ_DIR)/%.o:			$(SRC_DIR)/%.c $(LIBFT_HEADER) $(H) Makefile
+$(OBJ_DIR)/%.o:			$(SRC_DIR)/%.c $(LIBFT_A) $(H)
 		@mkdir -p $(OBJ_DIR)
 		$(CC) $(OBJ_FLAGS) -o $@ -c $<
 
-unit-test:				${LIBFT} ${OBJ_TEST} ${OBJS} $(LIBFT_HEADER) $(H) $(H_TEST)
-		${CC} ${CFLAGS} ${OBJ_TEST} ${OBJS} -o $@ ${LIBFT_FLAGS}
+unit-test:				${LIBFT} ${OBJ_TEST} ${OBJS} $(H) $(H_TEST)
+		${CC} ${CFLAGS} ${OBJ_TEST} ${OBJS} -o $@ $(LIBFT_A)
 
 test:					unit-test
 		./unit-test
