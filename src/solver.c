@@ -6,7 +6,7 @@
 /*   By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 15:54:43 by agaley            #+#    #+#             */
-/*   Updated: 2023/05/11 19:07:06 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2023/05/12 01:17:51 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,13 @@ void	*select_algo(t_stack *stack)
 	return (NULL);
 }
 
-char	*apply_algo(char *(*fun)(t_stack*, t_stack*), t_stack *stack_a)
+void	apply_algo(void (*fun)(t_stack*, t_stack*), t_stack *stack_a)
 {
 	t_stack	*stack_b;
-	char	*result;
 
-	stack_b = stack_init();
-	result = (*fun)(stack_a, stack_b);
+	stack_b = stack_init('b');
+	(*fun)(stack_a, stack_b);
 	stack_free(stack_b);
-	return (result);
 }
 
 int	check_result(t_stack *stack)

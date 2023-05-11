@@ -6,7 +6,7 @@
 /*   By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 01:18:06 by agaley            #+#    #+#             */
-/*   Updated: 2023/05/10 22:20:33 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2023/05/12 00:54:28 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	stack_rotate(t_stack *stack)
 	stack->head = first->next;
 	first->next = NULL;
 	last->next = first;
+	ft_printf("r%c\n", stack->id);
 	return (0);
 }
 
@@ -74,6 +75,7 @@ int	stack_rrotate(t_stack *stack)
 	stack_last_n(stack, 1)->next = NULL;
 	stack->head = last;
 	last->next = first;
+	ft_printf("rr%c\n", stack->id);
 	return (0);
 }
 

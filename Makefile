@@ -6,7 +6,7 @@
 #    By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/07 00:01:07 by agaley            #+#    #+#              #
-#    Updated: 2023/05/11 22:02:50 by agaley           ###   ########lyon.fr    #
+#    Updated: 2023/05/12 00:58:42 by agaley           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ TEST_DIR = test
 SRC = ${SRC_DIR}/push_swap.c
 SRCS = ${SRC_DIR}/stack_adapter.c ${SRC_DIR}/stack_utils.c ${SRC_DIR}/stack_utils2.c \
 	${SRC_DIR}/stack_swap_push.c ${SRC_DIR}/stack_rotate.c \
-	${SRC_DIR}/solver.c ${SRC_DIR}/algo.c \
+	${SRC_DIR}/solver.c ${SRC_DIR}/solver_algos.c \
 	${SRC_DIR}/parser.c ${SRC_DIR}/error.c
 H = ${SRC_DIR}/push_swap.h
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)

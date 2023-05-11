@@ -6,7 +6,7 @@
 /*   By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 22:56:32 by agaley            #+#    #+#             */
-/*   Updated: 2023/05/11 18:48:25 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2023/05/12 00:46:10 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
  * Initialize stack anchor
  * @return t_stack* or NULL if malloc fails
  */
-t_stack	*stack_init(void)
+t_stack	*stack_init(char id)
 {
 	t_stack	*stack;
 
@@ -24,6 +24,7 @@ t_stack	*stack_init(void)
 	if (!stack)
 		return (NULL);
 	stack->head = NULL;
+	stack->id = id;
 	return (stack);
 }
 

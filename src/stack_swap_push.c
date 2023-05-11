@@ -6,7 +6,7 @@
 /*   By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 22:56:32 by agaley            #+#    #+#             */
-/*   Updated: 2023/05/10 14:22:33 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2023/05/12 00:54:15 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	stack_swap(t_stack	*stack)
 	stack->head = first->next;
 	first->next = stack->head->next;
 	stack->head->next = first;
+	ft_printf("s%c\n", stack->id);
 	return (0);
 }
 
@@ -74,5 +75,6 @@ int	stack_push(t_stack *stack1, t_stack *stack2)
 	stack2->head = node1;
 	stack1->head = node1->next;
 	node1->next = node2;
+	ft_printf("p%c\n", stack2->id);
 	return (0);
 }

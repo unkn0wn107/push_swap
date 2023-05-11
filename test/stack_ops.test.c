@@ -6,7 +6,7 @@
 /*   By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 22:56:32 by agaley            #+#    #+#             */
-/*   Updated: 2023/05/11 19:43:16 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2023/05/12 00:46:59 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ int	test_stack_free(void)
 	node.value = 1;
 	stack = NULL;
 	stack_free(stack);
-	stack = stack_init();
+	stack = stack_init('a');
 	stack_free(stack);
-	stack = stack_init();
+	stack = stack_init('a');
 	stack_add(stack, node);
 	stack_free(stack);
-	stack = stack_init();
+	stack = stack_init('a');
 	stack_add(stack, node);
 	stack_add(stack, node);
 	stack_add(stack, node);
@@ -54,7 +54,7 @@ int	test_stack_swap(void)
 	stack = NULL;
 	if (stack_swap(stack) != -1)
 		return (ft_printf("stack_swap : doesn't return -1 on NULL\n"), -1);
-	stack = stack_init();
+	stack = stack_init('a');
 	if (stack_swap(stack) != 1)
 		return (ft_printf("stack_swap : doesn't return 1 for one elem\n"), -1);
 	stack_add(stack, node1);
@@ -83,12 +83,12 @@ int	test_stack_push(void)
 	node.value = 1;
 	if (stack_push(NULL, NULL) != -1)
 		return (ft_printf("stack_push : no return -1 on NULL, NULL\n"), -1);
-	stack1 = stack_init();
+	stack1 = stack_init('a');
 	if (stack_push(stack1, NULL) != -1)
 		return (ft_printf("stack_push : no return -1 on NULL stack 1\n"), -1);
 	if (stack_push(NULL, stack1) != -1)
 		return (ft_printf("stack_push : no return -1 on NULL stack 2\n"), -1);
-	stack2 = stack_init();
+	stack2 = stack_init('b');
 	if (stack_push(stack1, stack2) != 1)
 		return (ft_printf("stack_push : no return 1 for empty stack 1\n"), -1);
 	stack_add(stack1, node);
@@ -118,7 +118,7 @@ int	test_stack_rotate(void)
 	node3.value = 3;
 	if (stack_rotate(NULL) != -1)
 		return (ft_printf("stack_rotate : no return -1 on NULL\n"), -1);
-	stack = stack_init();
+	stack = stack_init('a');
 	if (stack_rotate(stack) != 1)
 		return (ft_printf("stack_rotate : no return 1 if stack < 2n\n"), -1);
 	stack_add(stack, node1);
@@ -152,7 +152,7 @@ int	test_stack_rrotate(void)
 	node3.value = 3;
 	if (stack_rrotate(NULL) != -1)
 		return (ft_printf("stack_rrotate : no return -1 on NULL\n"), -1);
-	stack = stack_init();
+	stack = stack_init('a');
 	if (stack_rrotate(stack) != 1)
 		return (ft_printf("stack_rrotate : no return 1 if stack < 2n\n"), -1);
 	stack_add(stack, node1);
