@@ -6,7 +6,7 @@
 /*   By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 22:56:32 by agaley            #+#    #+#             */
-/*   Updated: 2023/05/10 22:14:07 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2023/05/11 18:48:25 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ void	stack_add(t_stack *stack, t_node node)
 	t_node	*new;
 
 	if (stack == NULL)
-		exit_error(30);
+		exit_error(30, (t_stack *) NULL);
 	new = (t_node *)malloc(sizeof(*new));
 	if (new == NULL)
-		exit_error(10);
+		exit_error(10, stack);
 	new->value = node.value;
 	new->next = stack->head;
 	stack->head = new;
@@ -55,7 +55,7 @@ void	stack_pop(t_stack *stack)
 	t_node	*popped;
 
 	if (stack == NULL)
-		exit_error(30);
+		exit_error(30, stack);
 	if (stack->head)
 	{
 		popped = stack->head;

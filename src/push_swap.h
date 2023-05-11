@@ -6,7 +6,7 @@
 /*   By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 22:51:50 by agaley            #+#    #+#             */
-/*   Updated: 2023/05/10 22:51:04 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2023/05/11 19:46:12 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ t_node	*stack_get_node(t_stack *stack, long long int value);
 
 // Stack adapter
 void	fill_stack(char *str, t_stack *stack_a);
+size_t	stack_size(t_stack *stack);
 
 // Stack operations
 int		stack_swap(t_stack	*stack);
@@ -49,10 +50,22 @@ int		stack_rotate2(t_stack *stack1, t_stack *stack2);
 int		stack_rrotate(t_stack *stack);
 int		stack_rrotate2(t_stack *stack1, t_stack *stack2);
 
+// Algorithms
+void	*select_algo(t_stack *stack);
+char	*algo_3(t_stack *stack1, t_stack *stack2);
+char	*algo_5(t_stack *stack1, t_stack *stack2);
+char	*algo_100(t_stack *stack1, t_stack *stack2);
+char	*algo_500(t_stack *stack1, t_stack *stack2);
+char	*algo_500_plus(t_stack *stack1, t_stack *stack2);
+
+// Solver
+char	*apply_algo(char *(*fun)(t_stack*, t_stack*), t_stack *stack_a);
+int		check_result(t_stack *stack);
+
 // Parser
 char	*parse_args(char *str, char **argv);
 
 // Error handlers
-int		exit_error(int code);
+int		exit_error(int code, t_stack *stack);
 
 #endif
