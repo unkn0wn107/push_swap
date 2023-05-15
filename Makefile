@@ -6,7 +6,7 @@
 #    By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/07 00:01:07 by agaley            #+#    #+#              #
-#    Updated: 2023/05/12 00:58:42 by agaley           ###   ########lyon.fr    #
+#    Updated: 2023/05/16 00:49:03 by agaley           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,6 +62,9 @@ unit-test:				${LIBFT} ${OBJ_TEST} ${OBJS} $(H) $(H_TEST)
 
 test:					unit-test
 		./unit-test
+
+test-mem:				unit-test
+		valgrind --leak-check=full --show-leak-kinds=all ./unit-test
 
 check:
 		norminette ${SRC_DIR} ${LIBFT}

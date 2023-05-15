@@ -6,7 +6,7 @@
 /*   By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 22:56:32 by agaley            #+#    #+#             */
-/*   Updated: 2023/05/12 00:46:59 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2023/05/16 00:48:26 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ int	test_stack_free(void)
 	stack_add(stack, node);
 	stack_add(stack, node);
 	stack_free(stack);
-	if (stack)
-		return (ft_printf("stack_free : didn't free stack\n"), -1);
 	return (printf("stack_free: OK\n"), 0);
 }
 
