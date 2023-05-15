@@ -6,7 +6,7 @@
 #    By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/07 00:01:07 by agaley            #+#    #+#              #
-#    Updated: 2023/05/16 00:49:03 by agaley           ###   ########lyon.fr    #
+#    Updated: 2023/05/16 00:55:49 by agaley           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 SRC_TEST = ${TEST_DIR}/main.test.c \
-	${TEST_DIR}/stack_ops.test.c
+	${TEST_DIR}/stack_ops.test.c ${TEST_DIR}/stack_utils.test.c
 H_TEST = ${TEST_DIR}/test.h
 OBJ_TEST = $(SRC_TEST:$(TEST_DIR)/%.c=$(OBJ_DIR)/%.o)
 
@@ -67,7 +67,7 @@ test-mem:				unit-test
 		valgrind --leak-check=full --show-leak-kinds=all ./unit-test
 
 check:
-		norminette ${SRC_DIR} ${LIBFT}
+		norminette ${SRC_DIR} ${LIBFT} ${TEST_DIR}
 
 clean:
 		$(MAKE_LIBFT) $@

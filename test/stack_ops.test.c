@@ -6,36 +6,11 @@
 /*   By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 22:56:32 by agaley            #+#    #+#             */
-/*   Updated: 2023/05/16 00:48:26 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2023/05/16 00:54:34 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "test.h"
-
-// Protection check
-// Stack free check
-// One node + stack free check
-// 3 nodes + stack free check
-int	test_stack_free(void)
-{
-	t_stack	*stack;
-	t_node	node;
-
-	node.value = 1;
-	stack = NULL;
-	stack_free(stack);
-	stack = stack_init('a');
-	stack_free(stack);
-	stack = stack_init('a');
-	stack_add(stack, node);
-	stack_free(stack);
-	stack = stack_init('a');
-	stack_add(stack, node);
-	stack_add(stack, node);
-	stack_add(stack, node);
-	stack_free(stack);
-	return (printf("stack_free: OK\n"), 0);
-}
 
 // -1 if stack is NULL
 // 1 if stack has less than 2 nodes
@@ -100,6 +75,13 @@ int	test_stack_push(void)
 	return (0);
 }
 
+void	set_node_values(t_node *node1, t_node *node2, t_node *node3)
+{
+	node1->value = 1;
+	node2->value = 2;
+	node3->value = 3;
+}
+
 // -1 if stack is NULL
 // 1 if stack has less than 2 nodes
 // 0 otherwise
@@ -111,9 +93,7 @@ int	test_stack_rotate(void)
 	t_node	node2;
 	t_node	node3;
 
-	node1.value = 1;
-	node2.value = 2;
-	node3.value = 3;
+	set_node_values(&node1, &node2, &node3);
 	if (stack_rotate(NULL) != -1)
 		return (ft_printf("stack_rotate : no return -1 on NULL\n"), -1);
 	stack = stack_init('a');
@@ -145,9 +125,7 @@ int	test_stack_rrotate(void)
 	t_node	node2;
 	t_node	node3;
 
-	node1.value = 1;
-	node2.value = 2;
-	node3.value = 3;
+	set_node_values(&node1, &node2, &node3);
 	if (stack_rrotate(NULL) != -1)
 		return (ft_printf("stack_rrotate : no return -1 on NULL\n"), -1);
 	stack = stack_init('a');
