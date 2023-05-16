@@ -6,7 +6,7 @@
 /*   By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 22:14:23 by agaley            #+#    #+#             */
-/*   Updated: 2023/05/10 22:17:48 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2023/05/16 02:28:55 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ size_t	stack_size(t_stack *stack)
 		return (0);
 	last = stack->head;
 	i = 0;
+	if (last)
+		i++;
 	while (last->next)
 	{
 		last = last->next;
@@ -53,7 +55,7 @@ t_node	*stack_last_n(t_stack *stack, size_t n)
 	size = stack_size(stack);
 	if (n >= size)
 		return (NULL);
-	i = 0;
+	i = 1;
 	last_n = stack->head;
 	while (i++ < size - n)
 		last_n = last_n->next;

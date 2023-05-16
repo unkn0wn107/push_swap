@@ -6,11 +6,27 @@
 /*   By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 15:54:43 by agaley            #+#    #+#             */
-/*   Updated: 2023/05/12 01:17:51 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2023/05/16 02:32:26 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	solve(t_stack *stack_a)
+{
+	t_stack	*stack_b;
+	void	(*fun)(t_stack*, t_stack*);
+
+	fun = select_algo(stack_a);
+	if (!fun)
+		exit_error(10, stack_a);
+	stack_b = stack_init('b');
+	if (!stack_a || !stack_b)
+		exit_error(11, (t_stack *) NULL);
+	while ((check_result(stack_a) != 0))
+		(*fun)(stack_a, stack_b);
+	stack_free(stack_b);
+}
 
 void	*select_algo(t_stack *stack)
 {
@@ -18,22 +34,9 @@ void	*select_algo(t_stack *stack)
 		return (&algo_3);
 	if (stack_size(stack) <= 5)
 		return (&algo_5);
-	if (stack_size(stack) <= 100)
-		return (&algo_100);
-	if (stack_size(stack) <= 500)
-		return (&algo_500);
-	if (stack_size(stack) > 500)
-		return (&algo_500_plus);
+	if (stack_size(stack) > 5)
+		return (&algo_radix);
 	return (NULL);
-}
-
-void	apply_algo(void (*fun)(t_stack*, t_stack*), t_stack *stack_a)
-{
-	t_stack	*stack_b;
-
-	stack_b = stack_init('b');
-	(*fun)(stack_a, stack_b);
-	stack_free(stack_b);
 }
 
 int	check_result(t_stack *stack)

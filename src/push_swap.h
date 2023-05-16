@@ -6,7 +6,7 @@
 /*   By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 22:51:50 by agaley            #+#    #+#             */
-/*   Updated: 2023/05/12 01:16:56 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2023/05/16 01:48:06 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 typedef struct s_stack_node
 {
 	long long int		value;
+	size_t				index;
 	struct s_stack_node	*next;
 }t_node;
 
@@ -41,6 +42,9 @@ t_node	*stack_get_node(t_stack *stack, long long int value);
 // Stack adapter
 void	fill_stack(char *str, t_stack *stack_a);
 size_t	stack_size(t_stack *stack);
+void	stack_set_asc_index(t_stack *stack);
+t_node	*stack_min_value(t_stack *stack);
+t_node	*stack_next_min_value(t_stack *stack, long long int value);
 
 // Stack operations
 int		stack_swap(t_stack	*stack);
@@ -52,16 +56,14 @@ int		stack_rrotate(t_stack *stack);
 int		stack_rrotate2(t_stack *stack1, t_stack *stack2);
 
 // Algorithms
-void	*select_algo(t_stack *stack);
 void	algo_3(t_stack *stack1, t_stack *stack2);
 void	algo_5(t_stack *stack1, t_stack *stack2);
-void	algo_100(t_stack *stack1, t_stack *stack2);
-void	algo_500(t_stack *stack1, t_stack *stack2);
-void	algo_500_plus(t_stack *stack1, t_stack *stack2);
+void	algo_radix(t_stack *stack_a, t_stack *stack_b);
 
 // Solver
-void	apply_algo(void (*fun)(t_stack*, t_stack*), t_stack *stack_a);
+void	solve(t_stack *stack_a);
 int		check_result(t_stack *stack);
+void	*select_algo(t_stack *stack);
 
 // Parser
 char	*parse_args(char *str, char **argv);

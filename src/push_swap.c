@@ -6,7 +6,7 @@
 /*   By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 01:41:58 by agaley            #+#    #+#             */
-/*   Updated: 2023/05/12 00:44:32 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2023/05/16 02:22:07 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,12 @@ int	main(int argc, char **argv)
 	t_stack	*stack_a;
 
 	if (argc < 2)
-		exit_error(2, (t_stack *) NULL);
+		exit_error(20, (t_stack *) NULL);
 	input_list = ft_realloc(NULL, 1);
 	input_list = parse_args(input_list, argv);
 	stack_a = stack_init('a');
 	fill_stack(input_list, stack_a);
-	while ((check_result(stack_a) != 0))
-		apply_algo(select_algo(stack_a), stack_a);
+	solve(stack_a);
 	stack_free(stack_a);
 	exit (0);
 }
