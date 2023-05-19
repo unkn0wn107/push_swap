@@ -6,7 +6,7 @@
 /*   By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 15:57:49 by agaley            #+#    #+#             */
-/*   Updated: 2023/05/16 02:35:31 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2023/05/19 11:44:41 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 void	algo_3(t_stack *stack_a, t_stack *stack_b)
 {
 	(void)stack_b;
-	if (stack_a->head->index > stack_a->head->next->index)
+	if (stack_a->head->index > stack_a->head->next->index
+		&& stack_a->head->index > stack_a->head->next->next->index)
+		stack_rotate(stack_a);
+	else if (stack_a->head->index > stack_a->head->next->index)
 		stack_swap(stack_a);
 	else
 		stack_rrotate(stack_a);
