@@ -6,7 +6,7 @@
 /*   By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 00:53:05 by agaley            #+#    #+#             */
-/*   Updated: 2023/05/16 01:44:51 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2023/06/21 17:58:29 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	fill_stack(char *str, t_stack *stack_a)
 		if (stack_get_node(stack_a, num))
 			exit_error(21, stack_a);
 		node.value = num;
+		node.next = NULL;
 		stack_add(stack_a, node);
 	}
 	if (stack_a->head)

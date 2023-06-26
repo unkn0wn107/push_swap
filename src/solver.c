@@ -6,7 +6,7 @@
 /*   By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 15:54:43 by agaley            #+#    #+#             */
-/*   Updated: 2023/05/16 02:32:26 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2023/06/21 11:28:16 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 void	solve(t_stack *stack_a)
 {
-	t_stack	*stack_b;
+	t_stack	stack_b;
 	void	(*fun)(t_stack*, t_stack*);
 
 	fun = select_algo(stack_a);
 	if (!fun)
 		exit_error(10, stack_a);
-	stack_b = stack_init('b');
-	if (!stack_a || !stack_b)
-		exit_error(11, (t_stack *) NULL);
-	while ((check_result(stack_a) != 0))
-		(*fun)(stack_a, stack_b);
-	stack_free(stack_b);
+	stack_b.id = 'b';
+	stack_b.head = NULL;
+	// while ((check_result(stack_a) != 0))
+	(*fun)(stack_a, &stack_b);
+	// ft_printf("check %d\n", check_result(stack_a));
+	stack_free(&stack_b);
 }
 
 void	*select_algo(t_stack *stack)

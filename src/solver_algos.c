@@ -6,7 +6,7 @@
 /*   By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 15:57:49 by agaley            #+#    #+#             */
-/*   Updated: 2023/05/19 11:44:41 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2023/06/21 17:55:17 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,31 @@ void	algo_radix(t_stack *stack_a, t_stack *stack_b)
 			i++;
 		}
 		while (stack_b->head)
-		{
 			stack_push(stack_b, stack_a);
-		}
 		bit = bit << 1;
 	}
 }
+
+// void	algo_radix(t_stack *stack_a, t_stack *stack_b)
+// {
+// 	size_t	i;
+// 	size_t	size;
+// 	size_t	index;
+
+// 	size = stack_size(stack_a);
+// 	index = size - 1;
+// 	i = 0;
+// 	while (check_result(stack_a) != 0)
+// 	{
+// 		while (i < size)
+// 		{
+// 			if ((stack_a->head->index >> index) % 2 == 0)
+// 				stack_push(stack_a, stack_b);
+// 			else
+// 				stack_rotate(stack_a);
+// 			i++;
+// 		}
+// 		while (stack_size(stack_b))
+// 			stack_push(stack_b, stack_a);
+// 	}
+// }
