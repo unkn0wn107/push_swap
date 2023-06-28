@@ -29,9 +29,9 @@ void	fill_stack(char *str, t_stack *stack_a)
 		num = ft_atoi(arr[i]);
 		if ((num == 0 && !ft_strchr(arr[i], '0'))
 			|| ft_strncmp_free1(ft_itoa(num), arr[i], ft_strlen(arr[i])) != 0)
-			exit_error(22, stack_a);
+			exit_error(22, stack_a, arr, str);
 		if (stack_get_node(stack_a, num))
-			exit_error(21, stack_a);
+			exit_error(21, stack_a, arr, str);
 		stack_add(stack_a, num);
 	}
 	stack_set_asc_index(stack_a);

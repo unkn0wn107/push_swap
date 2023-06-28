@@ -20,16 +20,16 @@ char	*parse_args(char **argv)
 	str = malloc(sizeof(char));
 	str[0] = '\0';
 	if (!str)
-		exit_error(1, (t_stack *) NULL);
+		exit_error(1, NULL, NULL, NULL);
 	i = 1;
 	while (argv[i])
 	{
 		str = ft_strpush(str, " ");
 		if (!str)
-			exit_error(1, (t_stack *) NULL);
+			exit_error(1, NULL, NULL, NULL);
 		str = ft_strpush(str, argv[i++]);
 		if (!str)
-			exit_error(1, (t_stack *) NULL);
+			exit_error(1, NULL, NULL, NULL);
 	}
 	return (str);
 }

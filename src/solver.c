@@ -21,7 +21,7 @@ void	solve(t_stack *stack_a)
 		return ;
 	fun = select_algo(stack_a);
 	if (!fun)
-		exit_error(10, stack_a);
+		exit_error(10, stack_a, NULL, NULL);
 	else
 	{
 		stack_b.id = 'b';
@@ -49,7 +49,7 @@ int	check_result(t_stack *stack)
 	t_node	*node;
 
 	if (!stack)
-		exit_error(11, (t_stack *) NULL);
+		exit_error(11, NULL, NULL, NULL);
 	else
 	{
 		node = stack->head;

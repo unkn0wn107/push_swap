@@ -18,7 +18,7 @@ int	main(int argc, char **argv)
 	t_stack	stack_a;
 
 	if (argc < 2)
-		exit_error(20, (t_stack *) NULL);
+		exit_error(20, NULL, NULL, NULL);
 	input_list = parse_args(argv);
 	stack_a.id = 'a';
 	stack_a.head = NULL;

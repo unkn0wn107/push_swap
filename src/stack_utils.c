@@ -22,12 +22,12 @@ void	stack_add(t_stack *stack, int value)
 	t_node	*new;
 
 	if (stack == NULL)
-		exit_error(30, (t_stack *) NULL);
+		exit_error(30, NULL, NULL, NULL);
 	else
 	{
 		new = (t_node *)malloc(sizeof(t_node));
 		if (new == NULL)
-			exit_error(10, stack);
+			exit_error(10, stack, NULL, NULL);
 		else
 		{
 			new->value = value;

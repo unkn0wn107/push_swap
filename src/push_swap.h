@@ -72,6 +72,6 @@ char	*parse_args(char **argv);
 int		ft_strncmp_free1(char *s1, char *s2, size_t n);
 
 // Error handlers
-int		exit_error(int code, t_stack *stack);
+int		exit_error(int code, t_stack *stack, char **arr, char *str);
 
 #endif
