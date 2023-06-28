@@ -6,44 +6,35 @@
 /*   By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 22:56:32 by agaley            #+#    #+#             */
-/*   Updated: 2023/05/25 18:32:50 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2023/06/28 18:05:12 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-// /**
-//  * Initialize stack anchor
-//  * @return t_stack* or NULL if malloc fails
-//  */
-// t_stack	*stack_init(char id)
-// {
-// 	t_stack	*stack;
-
-// 	if (!stack)
-// 		return (NULL);
-// 	stack->head = NULL;
-// 	stack->id = id;
-// 	return (stack);
-// }
 
 /**
  * Adds an element to a stack
  * @param stack pointer towards stack anchor
  * @param new_addr the address of the allocated item
  */
-void	stack_add(t_stack *stack, t_node node)
+void	stack_add(t_stack *stack, int value)
 {
 	t_node	*new;
 
 	if (stack == NULL)
 		exit_error(30, (t_stack *) NULL);
-	new = (t_node *)malloc(sizeof(new));
-	if (new == NULL)
-		exit_error(10, stack);
-	new->value = node.value;
-	new->next = stack->head;
-	stack->head = new;
+	else
+	{
+		new = (t_node *)malloc(sizeof(t_node));
+		if (new == NULL)
+			exit_error(10, stack);
+		else
+		{
+			new->value = value;
+			new->next = stack->head;
+			stack->head = new;
+		}
+	}
 }
 
 /**

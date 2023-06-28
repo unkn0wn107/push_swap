@@ -6,7 +6,7 @@
 /*   By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 00:50:17 by agaley            #+#    #+#             */
-/*   Updated: 2023/05/16 01:01:31 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2023/06/28 13:53:03 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,25 @@
 
 int	exit_error(int code, t_stack *stack)
 {
-	char	*msg;
-
 	if (code == 10)
-		msg = "Memory allocation error";
+		ft_printf("\nMemory allocation error");
 	if (code == 11)
-		msg = "Stack doesn't exist";
+		ft_printf("\nStack doesn't exist");
 	if (code == 20)
-		msg = "Args error : Not enough args";
+		ft_printf("\nArgs error : Not enough args");
 	if (code == 21)
-		msg = "Args error : Duplicate entries";
+		ft_printf("\nArgs error : Duplicate entries");
 	if (code == 22)
-		msg = "Args error : Not a valid integer";
+		ft_printf("\nArgs error : Not a valid integer");
 	if (code == 30)
-		msg = "Stack error : Adding to empty stack";
+		ft_printf("\nStack error : Adding to empty stack");
 	if (code == 31)
-		msg = "Stack error : Duplicate entries";
+		ft_printf("\nStack error : Duplicate entries");
 	if (code == 40)
-		msg = "Algo error : Stack is not sorted";
+		ft_printf("\nAlgo error : Stack is not sorted");
 	if (code == 41)
-		msg = "Algo error : Algo not found";
-	ft_printf("%s\n", msg);
-	stack_free(stack);
+		ft_printf("\nAlgo error : Algo not found");
+	if (stack)
+		stack_free(stack);
 	exit (1);
 }

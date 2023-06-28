@@ -6,7 +6,7 @@
 #    By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/07 00:01:07 by agaley            #+#    #+#              #
-#    Updated: 2023/05/16 00:55:49 by agaley           ###   ########lyon.fr    #
+#    Updated: 2023/06/28 17:55:27 by agaley           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRC = ${SRC_DIR}/push_swap.c
 SRCS = ${SRC_DIR}/stack_adapter.c ${SRC_DIR}/stack_utils.c ${SRC_DIR}/stack_utils2.c \
 	${SRC_DIR}/stack_swap_push.c ${SRC_DIR}/stack_rotate.c \
 	${SRC_DIR}/solver.c ${SRC_DIR}/solver_algos.c \
-	${SRC_DIR}/parser.c ${SRC_DIR}/error.c
+	${SRC_DIR}/parser.c ${SRC_DIR}/error.c ${SRC_DIR}/utils.c
 H = ${SRC_DIR}/push_swap.h
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
@@ -68,6 +68,9 @@ test-mem:				unit-test
 
 check:
 		norminette ${SRC_DIR} ${LIBFT} ${TEST_DIR}
+
+static:					fclean
+		csbuild -c make
 
 clean:
 		$(MAKE_LIBFT) $@

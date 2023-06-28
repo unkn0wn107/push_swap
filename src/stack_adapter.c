@@ -6,38 +6,39 @@
 /*   By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 00:53:05 by agaley            #+#    #+#             */
-/*   Updated: 2023/06/21 17:58:29 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2023/06/28 17:56:00 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// TODO : ft_atoll to be implemented
 void	fill_stack(char *str, t_stack *stack_a)
 {
-	size_t				i;
-	long long int		num;
-	char				**arr;
-	t_node				node;
+	size_t	i;
+	int		num;
+	char	**arr;
 
 	i = 0;
 	arr = ft_split(str, ' ');
+	if (!arr)
+		return ;
 	while (arr[i])
 		i++;
 	while (i--)
 	{
 		num = ft_atoi(arr[i]);
 		if ((num == 0 && !ft_strchr(arr[i], '0'))
-			|| ft_strncmp(ft_itoa(num), arr[i], ft_strlen(arr[i])) != 0)
+			|| ft_strncmp_free1(ft_itoa(num), arr[i], ft_strlen(arr[i])) != 0)
 			exit_error(22, stack_a);
 		if (stack_get_node(stack_a, num))
 			exit_error(21, stack_a);
-		node.value = num;
-		node.next = NULL;
-		stack_add(stack_a, node);
+		stack_add(stack_a, num);
 	}
-	if (stack_a->head)
-		stack_set_asc_index(stack_a);
+	stack_set_asc_index(stack_a);
+	i = 0;
+	while (arr[i])
+		free(arr[i++]);
+	free(arr);
 }
 
 /**
@@ -47,7 +48,7 @@ void	fill_stack(char *str, t_stack *stack_a)
  * @param value value of node
  * @return first node in stack
  */
-t_node	*stack_get_node(t_stack *stack, long long int value)
+t_node	*stack_get_node(t_stack *stack, int value)
 {
 	t_node	*node;
 
@@ -111,7 +112,7 @@ t_node	*stack_min_value(t_stack *stack)
  * @param value value of current node
  * @return node with minimum in stack or NULL if none
  */
-t_node	*stack_next_min_value(t_stack *stack, long long int value)
+t_node	*stack_next_min_value(t_stack *stack, int value)
 {
 	t_node	*node;
 	t_node	*min;

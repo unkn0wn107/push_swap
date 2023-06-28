@@ -6,20 +6,22 @@
 /*   By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 00:51:30 by agaley            #+#    #+#             */
-/*   Updated: 2023/05/11 18:47:07 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2023/06/28 16:40:38 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char	*parse_args(char *str, char **argv)
+char	*parse_args(char **argv)
 {
 	int		i;
+	char	*str;
 
-	i = 1;
-	str = ft_realloc(NULL, 1);
+	str = malloc(sizeof(char));
+	str[0] = '\0';
 	if (!str)
 		exit_error(1, (t_stack *) NULL);
+	i = 1;
 	while (argv[i])
 	{
 		str = ft_strpush(str, " ");
