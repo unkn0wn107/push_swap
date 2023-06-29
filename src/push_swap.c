@@ -16,9 +16,18 @@ int	main(int argc, char **argv)
 {
 	char	*input_list;
 	t_stack	stack_a;
+	int		noparam;
 
 	if (argc < 2)
 		exit_error(20, NULL, NULL, NULL);
+	noparam = 1;
+	while (argv && --argc)
+	{
+		if (argc > 0 && argv[argc] && ft_strlen(argv[argc]) > 0)
+			noparam = 0;
+	}
+	if (noparam == 1)
+		exit(0);
 	input_list = parse_args(argv);
 	stack_a.id = 'a';
 	stack_a.head = NULL;
