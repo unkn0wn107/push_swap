@@ -18,9 +18,9 @@ char	*parse_args(char **argv)
 	char	*str;
 
 	str = malloc(sizeof(char));
-	str[0] = '\0';
 	if (!str)
 		exit_error(1, NULL, NULL, NULL);
+	str[0] = '\0';
 	i = 1;
 	while (argv[i])
 	{
