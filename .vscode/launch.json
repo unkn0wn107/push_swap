@@ -20,15 +20,6 @@
 			"program": "${workspaceFolder}/unit-test",
 			"cwd": "${workspaceFolder}",
 			"preLaunchTask": "tmake"
-		},
-		{
-			"type": "lldb",
-			"request": "launch",
-			"name": "Debug",
-			"program": "${workspaceFolder}/push_swap",
-			"args": ["2", "4", "1", "3"],
-			"cwd": "${workspaceFolder}",
-			"preLaunchTask": "make"
 		}
 	]
 }

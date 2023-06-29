@@ -17,8 +17,6 @@ int	main(void)
 	int	ret;
 
 	ret = 0;
-	if (test_stack_free() != 0)
-		ret = 1;
 	if (test_stack_swap() != 0)
 		ret = 1;
 	if (test_stack_push() != 0)

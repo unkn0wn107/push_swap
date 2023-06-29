@@ -25,8 +25,7 @@ H = ${SRC_DIR}/push_swap.h
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
-SRC_TEST = ${TEST_DIR}/main.test.c \
-	${TEST_DIR}/stack_ops.test.c ${TEST_DIR}/stack_utils.test.c
+SRC_TEST = ${TEST_DIR}/main.test.c ${TEST_DIR}/stack_ops.test.c
 H_TEST = ${TEST_DIR}/test.h
 OBJ_TEST = $(SRC_TEST:$(TEST_DIR)/%.c=$(OBJ_DIR)/%.o)
 
@@ -35,7 +34,7 @@ LIBFT_A = libft/libft.a
 MAKE_LIBFT = make -C libft
 
 MAKEFLAGS += --no-print-directory
-CFLAGS = -Wall -Wextra -Werror -g3
+CFLAGS = -Wall -Wextra -Werror -pipe
 OBJ_FLAGS = ${CFLAGS} -I$(LIBFT) -I$(SRC_DIR)
 CC = gcc
 
@@ -58,7 +57,7 @@ $(OBJ_DIR)/%.o:			$(SRC_DIR)/%.c $(LIBFT_A) $(H)
 		$(CC) $(OBJ_FLAGS) -o $@ -c $<
 
 unit-test:				${LIBFT} ${OBJ_TEST} ${OBJS} $(H) $(H_TEST)
-		${CC} ${CFLAGS} ${OBJ_TEST} ${OBJS} -o $@ $(LIBFT_A)
+		${CC} ${CFLAGS} -g3 ${OBJ_TEST} ${OBJS} -o $@ $(LIBFT_A)
 
 test:					unit-test
 		./unit-test

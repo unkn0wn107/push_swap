@@ -18,22 +18,19 @@
 // Swap first and second nodes and verify result
 int	test_stack_swap(void)
 {
+	t_stack	s;
 	t_stack	*stack;
-	t_node	node1;
-	t_node	node2;
 
-	node1.value = 1;
-	node2.value = 2;
-	stack = NULL;
-	if (stack_swap(stack) != -1)
+	stack = &s;
+	if (stack_swap(NULL) != -1)
 		return (ft_printf("stack_swap : doesn't return -1 on NULL\n"), -1);
-	stack = stack_init('a');
+	stack_init(stack, 'a');
 	if (stack_swap(stack) != 1)
 		return (ft_printf("stack_swap : doesn't return 1 for one elem\n"), -1);
-	stack_add(stack, node1);
+	stack_add(stack, 1);
 	if (stack_swap(stack) != 1)
 		return (ft_printf("stack_swap : doesn't return 1 for one elem\n"), -1);
-	stack_add(stack, node2);
+	stack_add(stack, 2);
 	if (stack_swap(stack) != 0)
 		return (ft_printf("stack_swap : doesn't return 0 for success\n"), -1);
 	if (stack->head->value != 1 || stack->head->next->value != 2)
@@ -49,22 +46,24 @@ int	test_stack_swap(void)
 // Push first node of stack 1 to stack 2 and verify result
 int	test_stack_push(void)
 {
+	t_stack	s1;
+	t_stack	s2;
 	t_stack	*stack1;
 	t_stack	*stack2;
-	t_node	node;
 
-	node.value = 1;
+	stack1 = &s1;
+	stack2 = &s2;
 	if (stack_push(NULL, NULL) != -1)
 		return (ft_printf("stack_push : no return -1 on NULL, NULL\n"), -1);
-	stack1 = stack_init('a');
+	stack_init(stack1, 'a');
 	if (stack_push(stack1, NULL) != -1)
 		return (ft_printf("stack_push : no return -1 on NULL stack 1\n"), -1);
 	if (stack_push(NULL, stack1) != -1)
 		return (ft_printf("stack_push : no return -1 on NULL stack 2\n"), -1);
-	stack2 = stack_init('b');
+	stack_init(stack2, 'b');
 	if (stack_push(stack1, stack2) != 1)
 		return (ft_printf("stack_push : no return 1 for empty stack 1\n"), -1);
-	stack_add(stack1, node);
+	stack_add(stack1, 1);
 	if (stack_push(stack1, stack2) != 0)
 		return (ft_printf("stack_push : no return 0 for success\n"), -1);
 	if (stack2->head->value != 1 || stack1->head != NULL)
@@ -75,35 +74,26 @@ int	test_stack_push(void)
 	return (0);
 }
 
-void	set_node_values(t_node *node1, t_node *node2, t_node *node3)
-{
-	node1->value = 1;
-	node2->value = 2;
-	node3->value = 3;
-}
-
 // -1 if stack is NULL
 // 1 if stack has less than 2 nodes
 // 0 otherwise
 // Rotate stack and verify result
 int	test_stack_rotate(void)
 {
+	t_stack	s;
 	t_stack	*stack;
-	t_node	node1;
-	t_node	node2;
-	t_node	node3;
 
-	set_node_values(&node1, &node2, &node3);
+	stack = &s;
 	if (stack_rotate(NULL) != -1)
 		return (ft_printf("stack_rotate : no return -1 on NULL\n"), -1);
-	stack = stack_init('a');
+	stack_init(stack, 'a');
 	if (stack_rotate(stack) != 1)
 		return (ft_printf("stack_rotate : no return 1 if stack < 2n\n"), -1);
-	stack_add(stack, node1);
+	stack_add(stack, 1);
 	if (stack_rotate(stack) != 1)
 		return (ft_printf("stack_rotate : no return 1 if stack < 2n\n"), -1);
-	stack_add(stack, node2);
-	stack_add(stack, node3);
+	stack_add(stack, 2);
+	stack_add(stack, 3);
 	if (stack_rotate(stack) != 0)
 		return (ft_printf("stack_rotate : no return 0 for success\n"), -1);
 	if (stack->head->value != 2 || stack->head->next->value != 1
@@ -120,22 +110,20 @@ int	test_stack_rotate(void)
 // Reverse rotate stack and verify result
 int	test_stack_rrotate(void)
 {
+	t_stack	s;
 	t_stack	*stack;
-	t_node	node1;
-	t_node	node2;
-	t_node	node3;
 
-	set_node_values(&node1, &node2, &node3);
+	stack = &s;
 	if (stack_rrotate(NULL) != -1)
 		return (ft_printf("stack_rrotate : no return -1 on NULL\n"), -1);
-	stack = stack_init('a');
+	stack_init(stack, 'a');
 	if (stack_rrotate(stack) != 1)
 		return (ft_printf("stack_rrotate : no return 1 if stack < 2n\n"), -1);
-	stack_add(stack, node1);
+	stack_add(stack, 1);
 	if (stack_rrotate(stack) != 1)
 		return (ft_printf("stack_rrotate : no return 1 if stack < 2n\n"), -1);
-	stack_add(stack, node2);
-	stack_add(stack, node3);
+	stack_add(stack, 2);
+	stack_add(stack, 3);
 	if (stack_rrotate(stack) != 0)
 		return (ft_printf("stack_rrotate : no return 0 for success\n"), -1);
 	if (stack->head->value != 1 || stack->head->next->value != 3

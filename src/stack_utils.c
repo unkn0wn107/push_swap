@@ -13,6 +13,18 @@
 #include "push_swap.h"
 
 /**
+ * Initialize stack anchor
+ * @return t_stack* or NULL if malloc fails
+ */
+void	stack_init(t_stack	*stack, char id)
+{
+	if (!stack)
+		return ;
+	stack->head = NULL;
+	stack->id = id;
+}
+
+/**
  * Adds an element to a stack
  * @param stack pointer towards stack anchor
  * @param new_addr the address of the allocated item

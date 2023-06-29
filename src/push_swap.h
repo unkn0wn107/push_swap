@@ -31,6 +31,7 @@ typedef struct s_stack
 }t_stack;
 
 // Stack utils
+void	stack_init(t_stack *stack, char id);
 void	stack_add(t_stack *stack, int value);
 void	stack_pop(t_stack *stack);
 void	stack_free(t_stack *stack);
