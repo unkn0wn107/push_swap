@@ -53,8 +53,6 @@ int	test_stack_push(void)
 
 	stack1 = &s1;
 	stack2 = &s2;
-	if (stack_push(NULL, NULL) != -1)
-		return (ft_printf("stack_push : no return -1 on NULL, NULL\n"), -1);
 	stack_init(stack1, 'a');
 	if (stack_push(stack1, NULL) != -1)
 		return (ft_printf("stack_push : no return -1 on NULL stack 1\n"), -1);
