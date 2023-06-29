@@ -17,7 +17,7 @@ void	solve(t_stack *stack_a)
 	t_stack	stack_b;
 	void	(*fun)(t_stack*, t_stack*);
 
-	if (stack_size(stack_a) == 1)
+	if (stack_size(stack_a) == 1 || check_result(stack_a) == 0)
 		return ;
 	fun = select_algo(stack_a);
 	if (!fun)
